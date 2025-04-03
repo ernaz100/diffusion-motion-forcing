@@ -212,6 +212,9 @@ class TimestepEmbedder(nn.Module):
         Returns:
             Tensor of shape [batch_size, latent_dim] containing the timestep embeddings
         """
+        # Convert timesteps to long for indexing
+        timesteps = timesteps.long()
+        
         # Get embeddings from the pre-computed table
         # sequence_pos_encoder.pe has shape [max_len, 1, latent_dim]
         # timesteps has shape [batch_size]
